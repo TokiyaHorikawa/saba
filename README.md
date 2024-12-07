@@ -7,8 +7,8 @@
 
 ## サンプルコード
 
-https://github.com/d0iasm/saba
-https://github.com/d0iasm/sababook
+- 完成コード: https://github.com/d0iasm/saba
+- 章ごとのコード: https://github.com/d0iasm/sababook
 
 ## 学習時メモ
 
