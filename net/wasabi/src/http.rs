@@ -1,8 +1,8 @@
-extern create alloc;
-use alloc::string::String;
+extern crate alloc;
 use alloc::format;
+use alloc::string::String;
+use crate::alloc::string::ToString;
 use alloc::vec::Vec;
-use create::alloc::string::ToString;
 use saba_core::error::Error;
 use saba_core::http::HttpResponse;
 use noli::net::lookup_host;
@@ -78,6 +78,11 @@ impl HttpClient {
         break;
       }
       received.extend_from_slice(&buf[..bytes_read]);
+    }
+
+    match core::str::from_utf8(&received) {
+      Ok(response) => HttpResponse::new(response.to_string()),
+      Err(e) => Err(Error::NetWork(format!("Invalid received response: {}", e)))
     }
   }
 }
